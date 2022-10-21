@@ -5,3 +5,7 @@ const port = 3003;
 const server = app.listen(port, () => {
   console.log("Server listening On Port " + port);
 });
+
+app.get("/", (req, res, next) => {
+  res.status(200).send("Massi");
+});
