@@ -12,7 +12,6 @@ app.set("views", "views");
 
 // Routes
 const loginRoute = require("./routes/loginRoutes");
-
 app.use("/login", loginRoute);
 
 app.get("/", middleware.requireLogin, (req, res, next) => {
