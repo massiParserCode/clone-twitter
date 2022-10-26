@@ -3,12 +3,19 @@ extends layouts/login-layout.pug
 
 block content
     .loginContainer 
-      h1 Regsietr 
+      h1 Register 
       form(method="post")
-        input(type="text",name="logUserName",placeholder="Username or Email",required="")
-        input(type="password",name="logPassword",placeholder="Password",required="")
-        input(type="submit",value="Login")
-      a(href="/register") Need an Account? Register here.
+
+        input(type="text",name="firstName",placeholder="First Name",required="")
+        input(type="text",name="lastNaame",placeholder="Last Name",required="")
+        input(type="text",name="username",placeholder="Username",required="")
+        input(type="email",name="email",placeholder="Email",required="")
+        input(type="password",name="password",placeholder="Password",required="")
+        input(type="password",name="passwordConf",placeholder="Confirm Password",required="")
+        input(type="submit",value="Register")
+
+
+      a(href="/login") Already have an account ? Login here.
 
     
 
