@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 3003;
+const port = 8000;
 const middleware = require("./middleware");
 
 const server = app.listen(port, () => {
@@ -10,10 +10,11 @@ const server = app.listen(port, () => {
 app.set("view engine", "pug");
 app.set("views", "views");
 
-// Routes
+// Routes login
 const loginRoute = require("./routes/loginRoutes");
 app.use("/login", loginRoute);
 
+// route for main page
 app.get("/", middleware.requireLogin, (req, res, next) => {
   let payload = {
     pageTitle: "Home",
