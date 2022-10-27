@@ -3,6 +3,9 @@ const app = express();
 const port = 8000;
 const middleware = require("./middleware");
 const path = require("path");
+const bodyParser = require("body-parser");
+
+app.use(bodyParser.urlencoded({ extended: false }));
 
 const server = app.listen(port, () => {
   console.log("Server listening On Port " + port);
