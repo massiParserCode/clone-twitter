@@ -4,6 +4,7 @@ const port = 8000;
 const middleware = require("./middleware");
 const path = require("path");
 const bodyParser = require("body-parser");
+const mongoose = require("./database");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -15,6 +16,8 @@ app.set("view engine", "pug");
 app.set("views", "views");
 
 app.use(express.static(path.join(__dirname, "public")));
+
+/* ====== Rotues ===== */
 
 // Routes login
 const loginRoute = require("./routes/loginRoutes");
