@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const router = express.Router();
 const bodyParser = require("body-parser");
+const User = require("../schemas/UserSchema");
 
 app.set("view engine", "pug");
 app.set("views", "views");
@@ -12,7 +13,7 @@ router.get("/", (req, res, next) => {
   res.status(200).render("register");
 });
 
-router.post("/", (req, res, next) => {
+router.post("/", async (req, res, next) => {
   let firstName = req.body.firstName.trim();
   let lastName = req.body.lastName.trim();
   let username = req.body.username.trim();
@@ -22,6 +23,25 @@ router.post("/", (req, res, next) => {
   let payload = req.body;
 
   if (firstName && lastName && username && email && password) {
+    let user = await User.findOne({
+      $or: [{ username }, { email }],
+    }).catch((error) => {
+      console.log(error);
+      payload.errorMessage = "Something went wrong.";
+      res.status(200).render("register", payload);
+    });
+
+    if (user === null) {
+      //user not found
+    } else {
+      //user found
+      if ((email = user.email)) {
+        payload.errorMessage = "Email Already in use.";
+      } else {
+        payload.errorMessage = "Username Already in use.";
+      }
+      res.status(200).render("register", payload);
+    }
   } else {
     payload.errorMessage = "Make sure each field has a vaild value";
     res.status(200).render("register", payload);
