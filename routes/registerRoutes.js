@@ -36,8 +36,7 @@ router.post("/", async (req, res, next) => {
 
       let data = req.body;
 
-      User.create(data)
-      .then((user) => {
+      User.create(data).then((user) => {
         console.log(user);
       });
     } else {
