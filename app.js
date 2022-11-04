@@ -7,8 +7,6 @@ const bodyParser = require("body-parser");
 const mongoose = require("./database");
 const session = require("express-session");
 
-app.use(bodyParser.urlencoded({ extended: false }));
-
 const server = app.listen(port, () => {
   console.log("Server listening On Port " + port);
 });
@@ -16,11 +14,18 @@ const server = app.listen(port, () => {
 app.set("view engine", "pug");
 app.set("views", "views");
 
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
+app.use(
+  session({
+    secret: "bad chips",
+    resave: true,
+    saveUninitialized: false,
+  })
+);
 
 /* ====== Rotues ===== */
 
-// Routes login
 const loginRoute = require("./routes/loginRoutes");
 const registerRoute = require("./routes/registerRoutes");
 
