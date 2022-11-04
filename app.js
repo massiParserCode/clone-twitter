@@ -5,6 +5,7 @@ const middleware = require("./middleware");
 const path = require("path");
 const bodyParser = require("body-parser");
 const mongoose = require("./database");
+const session = require("express-session");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -26,7 +27,7 @@ const registerRoute = require("./routes/registerRoutes");
 app.use("/login", loginRoute);
 app.use("/register", registerRoute);
 
-// route for main page
+// Routes for main page
 app.get("/", middleware.requireLogin, (req, res, next) => {
   let payload = {
     pageTitle: "Home",
