@@ -6,21 +6,22 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title #{pageTitle}
         link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css", integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N", crossorigin="anonymous")
+        link(rel="stylesheet", href="/css/main.css")
     body 
 
         .wrapper
             .row
-                nav.col-2.col-md-5
+                nav.col-2
                     span Navbar
 
-                .mainSectionContainer.col-8.col-md-5
-                    span main section
+                .mainSectionContainer.col-10.col-md-8.col-lg-6
                     block content
 
-                .col-2
+                .d-none.d-md-block.col-2.col-lg-4
                     span third column
 
 
 
+        script(src='https://kit.fontawesome.com/c6de4a6bc7.js', crossorigin='anonymous')
         script(src='https://code.jquery.com/jquery-3.6.1.min.js', integrity='sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=', crossorigin='anonymous')
         script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js", integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk", crossorigin="anonymous")

@@ -1,0 +1,13 @@
+nav{
+    background-color: red;
+}
+
+.mainSectionContainer{
+    background-color: blue;
+}
+
+
+.row{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
