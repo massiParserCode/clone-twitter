@@ -26,7 +26,12 @@ html(lang="en")
                        i.fa-solid.fa-user
                    a(href="/logout")
                        i.fa-solid.fa-right-from-bracket
+
+
                 .mainSectionContainer.col-10.col-md-8.col-lg-6
+                    .titleContainer 
+                        h1 #{pageTitle}
+
                     block content
 
                 .d-none.d-md-block.col-2.col-lg-4
