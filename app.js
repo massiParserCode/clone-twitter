@@ -14,8 +14,11 @@ const server = app.listen(port, () => {
 app.set("view engine", "pug");
 app.set("views", "views");
 
+/* ===== format form ==== */
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
+
 app.use(
   session({
     secret: "bad chips",
@@ -28,9 +31,11 @@ app.use(
 
 const loginRoute = require("./routes/loginRoutes");
 const registerRoute = require("./routes/registerRoutes");
+const logoutRoute = require("./routes/logoutRoutes");
 
 app.use("/login", loginRoute);
 app.use("/register", registerRoute);
+app.use("/logout", logoutRoute);
 
 // Routes for main page
 app.get("/", middleware.requireLogin, (req, res, next) => {
